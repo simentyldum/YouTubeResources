@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
 
@@ -49,6 +50,8 @@ class ViewController: UIViewController {
         stackVw.translatesAutoresizingMaskIntoConstraints = false
         return stackVw
     }()
+    
+    private var subscription: AnyCancellable?
         
     override func loadView() {
         super.loadView()
@@ -58,12 +61,27 @@ class ViewController: UIViewController {
     @objc
     func startTimer() {
         print("Start")
+        subscription = Timer
+            .publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .scan(0, { (count, _) in
+                return count + 1
+            })
+            .sink(receiveCompletion: { _ in
+                print("Finshed")
+            }, receiveValue: { [weak self] count in
+                print("Updating the label to the current value: \(count.format)")
+                self?.countLbl.text = count.format
+                
+            })
+        
         
     }
     
     @objc
     func stopTimer() {
         print("Stop")
+        subscription?.cancel()
     }
 }
 
