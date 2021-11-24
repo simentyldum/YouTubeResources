@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380ECE9E274CDDFC002FF13B /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380ECE9D274CDDFC002FF13B /* CommentViewModel.swift */; };
+		380ECEA0274CED49002FF13B /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380ECE9F274CED49002FF13B /* AccountViewModel.swift */; };
 		64621F0E262B68A90083CB9A /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64621F0D262B68A90083CB9A /* UIViewController+Alert.swift */; };
 		64F976CE26261A7400103463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F976CD26261A7400103463 /* AppDelegate.swift */; };
 		64F976D026261A7400103463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F976CF26261A7400103463 /* SceneDelegate.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		380ECE9D274CDDFC002FF13B /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		380ECE9F274CED49002FF13B /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		64621F0D262B68A90083CB9A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		64F976CA26261A7400103463 /* PassthroughSubjects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassthroughSubjects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F976CD26261A7400103463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		380ECE9A274CDD93002FF13B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				380ECE9D274CDDFC002FF13B /* CommentViewModel.swift */,
+				380ECE9F274CED49002FF13B /* AccountViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		64621F0C262B689B0083CB9A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +79,7 @@
 		64F976CC26261A7400103463 /* PassthroughSubjects */ = {
 			isa = PBXGroup;
 			children = (
+				380ECE9A274CDD93002FF13B /* View Model */,
 				64621F0C262B689B0083CB9A /* Extensions */,
 				64F976CD26261A7400103463 /* AppDelegate.swift */,
 				64F976CF26261A7400103463 /* SceneDelegate.swift */,
@@ -155,6 +169,8 @@
 				64F976D226261A7400103463 /* ViewController.swift in Sources */,
 				64F976CE26261A7400103463 /* AppDelegate.swift in Sources */,
 				64F976D026261A7400103463 /* SceneDelegate.swift in Sources */,
+				380ECE9E274CDDFC002FF13B /* CommentViewModel.swift in Sources */,
+				380ECEA0274CED49002FF13B /* AccountViewModel.swift in Sources */,
 				64621F0E262B68A90083CB9A /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

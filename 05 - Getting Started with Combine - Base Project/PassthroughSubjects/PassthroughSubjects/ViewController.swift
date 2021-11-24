@@ -39,14 +39,20 @@ class ViewController: UIViewController {
         return stackVw
     }()
     
+    private lazy var accountViewModel = AccountViewModel()
+    private lazy var commentViewModel = CommentViewModel(manager: accountViewModel)
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
     override func loadView() {
         super.loadView()
         setup()
+        accountSubscription()
     }
     
     @objc
     func commentDidTouch() {
-        
+        commentViewModel.send(comment: commentTxtVw.text)
     }
 }
 
@@ -70,5 +76,20 @@ private extension ViewController {
             formContainerStackVw.bottomAnchor.constraint(equalTo: view.bottomAnchor,
                                                          constant: -44)
         ])
+        
+    }
+    
+    func accountSubscription() {
+        
+        accountViewModel
+            .userAccountStatus
+            .sink{ [weak self] status in
+                guard let self = self else { return }
+                if status == .banned {
+                    self.showBlocked()
+                }
+                
+            }
+            .store(in: &subscriptions)
     }
 }

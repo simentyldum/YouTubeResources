@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
 
@@ -53,13 +54,28 @@ class ViewController: UIViewController {
         return stackVw
     }()
     
+    private let person =  CurrentValueSubject<Person, Error>(Person(firstName: "",
+                                                                    lastName: "",
+                                                                     occupation: ""))
+    
+    private var subscription = Set<AnyCancellable>()
+    
     override func loadView() {
         super.loadView()
         setup()
+        setupInputSubscription()
+        setupPersonSubscription()
     }
     
     @objc
     func confirmDidTouch() {
+        
+        if person.value.isValid {
+            person.send(completion: .finished)
+            
+        } else {
+            self.showFailed(message: UserError.invalid.errorDescription)
+        }
         
     }
 }
@@ -67,6 +83,8 @@ class ViewController: UIViewController {
 private extension ViewController {
     
     func setup() {
+        
+        
         
         formContainerStackVw.addArrangedSubview(firstNameTxtField)
         formContainerStackVw.addArrangedSubview(lastNameTxtField)
@@ -88,4 +106,52 @@ private extension ViewController {
             .arrangedSubviews
             .forEach { $0.heightAnchor.constraint(equalToConstant: 44).isActive = true }
     }
+    
+    func setupInputSubscription() {
+        
+        NotificationCenter
+            .default
+            .publisher(for: UITextField.textDidChangeNotification, object: firstNameTxtField)
+            .compactMap({ ($0.object as? UITextField)?.text })
+            .sink{ [weak self] val in
+                self?.person.value.firstName = val
+            }
+            .store(in: &subscription )
+        
+        
+        NotificationCenter
+            .default
+            .publisher(for: UITextField.textDidChangeNotification, object: lastNameTxtField)
+            .compactMap({ ($0.object as? UITextField)?.text })
+            .sink{ [weak self] val in
+                self?.person.value.lastName = val
+            }
+            .store(in: &subscription )
+        
+        
+        
+        NotificationCenter
+            .default
+            .publisher(for: UITextField.textDidChangeNotification, object: occupationTxtField)
+            .compactMap({ ($0.object as? UITextField)?.text })
+            .sink{ [weak self] val in
+                self?.person.value.occupation = val
+            }
+            .store(in: &subscription )
+    }
+    
+    func setupPersonSubscription() {
+    
+        person
+            .sink { [weak self] _ in
+                print("Final input: \(self?.person.value.message ?? "")")
+                
+                
+            } receiveValue: { person in
+                print(person)
+            }
+            .store(in: &subscription )
+    }
 }
+
+

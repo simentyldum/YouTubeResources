@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+
 
 class ViewController: UIViewController {
 
@@ -24,10 +26,13 @@ class ViewController: UIViewController {
         lbl.font = .systemFont(ofSize: 24, weight: .semibold)
         return lbl
     }()
+    
+    private var subscriptions = Set<AnyCancellable>()
         
     override func loadView() {
         super.loadView()
         setup()
+        setupSubscription()
     }
 }
 
@@ -51,4 +56,16 @@ private extension ViewController {
                                               constant: -8)
         ])
     }
+    func setupSubscription() {
+        
+        NotificationCenter
+            .default
+            .publisher(for: UITextField.textDidChangeNotification, object: inputTxtField)
+            .compactMap({($0.object as? UITextField)?.text })
+            .map{ "The user entered \($0)" }
+            .assign(to: \.text, on: textLbl)
+            .store(in: &subscriptions )
+        
+    }
+    
 }

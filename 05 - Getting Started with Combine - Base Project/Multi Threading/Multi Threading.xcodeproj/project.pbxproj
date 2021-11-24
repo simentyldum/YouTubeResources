@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380ECEA3274D0330002FF13B /* ImageDownloaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380ECEA2274D0330002FF13B /* ImageDownloaderViewModel.swift */; };
 		64F976EF26261AA400103463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F976EE26261AA400103463 /* AppDelegate.swift */; };
 		64F976F126261AA400103463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F976F026261AA400103463 /* SceneDelegate.swift */; };
 		64F976F326261AA400103463 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F976F226261AA400103463 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		380ECEA2274D0330002FF13B /* ImageDownloaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderViewModel.swift; sourceTree = "<group>"; };
 		64F976EB26261AA400103463 /* Multi Threading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multi Threading.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F976EE26261AA400103463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64F976F026261AA400103463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		380ECEA1274D0305002FF13B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				380ECEA2274D0330002FF13B /* ImageDownloaderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		64F976E226261AA400103463 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		64F976ED26261AA400103463 /* Multi Threading */ = {
 			isa = PBXGroup;
 			children = (
+				380ECEA1274D0305002FF13B /* ViewModel */,
 				64F976EE26261AA400103463 /* AppDelegate.swift */,
 				64F976F026261AA400103463 /* SceneDelegate.swift */,
 				64F976F226261AA400103463 /* ViewController.swift */,
@@ -140,6 +151,7 @@
 				64F976F326261AA400103463 /* ViewController.swift in Sources */,
 				64F976EF26261AA400103463 /* AppDelegate.swift in Sources */,
 				64F976F126261AA400103463 /* SceneDelegate.swift in Sources */,
+				380ECEA3274D0330002FF13B /* ImageDownloaderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
